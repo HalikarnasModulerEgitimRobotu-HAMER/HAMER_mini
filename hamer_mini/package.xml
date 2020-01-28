@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>hamer_mini</name>
+  <version>0.0.0</version>
+  <description>The hamer_mini package</description>
+  <maintainer email="akerdogmus@gmail.com">ake</maintainer>
+  <license>TODO</license>
+
+  <exec_depend>gazebo_ros</exec_depend>
+  <build_depend>gazebo_ros</build_depend> 
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+
+  <export>
+
+  </export>
+</package>
