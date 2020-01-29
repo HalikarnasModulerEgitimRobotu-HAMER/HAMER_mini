@@ -13,9 +13,9 @@ Gazebo Launching:
     
 # HAMER_mini v0.2
 
-ChangeLog v0.2 -- 29.01.2020
-
---Ultrasonic sensors added.
+Changelog v0.2 -- 29.01.2020
+============================
+- Ultrasonic sensors added.
 
 Requirements:
 
