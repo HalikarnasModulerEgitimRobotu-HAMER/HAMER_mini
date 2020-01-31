@@ -23,6 +23,14 @@ Requirements:
 
         $ cd ~/hamer_mini/src
         $ git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b melodic-devel
-        
-        
+
+# HAMER_mini v0.3
+
+Changelog v0.3 (31-01-2020)
+---------------------------
+
+-   Added "gazebo_ros_control" to hamer_mini's urdf file.
+-   Changed ultrasonic sensors positions and quantities.
+
+
 Contributors: Alim Kerem Erdoğmuş
