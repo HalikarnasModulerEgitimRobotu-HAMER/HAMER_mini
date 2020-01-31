@@ -4,6 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /RobotModel1
         - /TF1
         - /Range1
         - /Range2
@@ -133,6 +134,8 @@ Visualization Manager:
           Value: true
         left_front_wheel:
           Value: true
+        odom:
+          Value: true
         right_back_wheel:
           Value: true
         right_front_wheel:
@@ -151,7 +154,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        dummy:
+        odom:
           base_link:
             left_back_wheel:
               {}
@@ -239,25 +242,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.6721946001052856
+      Distance: 0.9041723012924194
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.01786561869084835
-        Y: -0.0035335207358002663
-        Z: -0.04320078343153
+        X: -0.04565923660993576
+        Y: 0.027435174211859703
+        Z: -0.06528586149215698
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7347957491874695
+      Pitch: 0.6347966194152832
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.849877119064331
+      Yaw: 0.3566901981830597
     Saved: ~
 Window Geometry:
   Displays:

@@ -213,7 +213,7 @@
 		<child link="sonar_front"/>
 	</joint>	
 
-	<link name="sonar_back">
+	<!-- <link name="sonar_back">
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
@@ -238,8 +238,9 @@
 		<origin xyz="-0.1275 0 0.01" rpy="0 3.14 0"/>
 		<parent link="base_link"/>
 		<child link="sonar_back"/>
-	</joint>	
+	</joint> -->	
 
+	<!-- Front-Left/Right Sonars -->
 	<link name="sonar_left">
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
@@ -262,7 +263,7 @@
 
 	<joint name="sonar_left_joint" type="fixed">
 		<axis xyz="0 0 0" />
-		<origin xyz="0 0.075 0.01" rpy="0 0 1.57"/>
+		<origin xyz="0.1275 0.075 0.01" rpy="0 0 0.785"/>
 		<parent link="base_link"/>
 		<child link="sonar_left"/>
 	</joint>	
@@ -289,7 +290,7 @@
 
 	<joint name="sonar_right_joint" type="fixed">
 		<axis xyz="0 0 0" />
-		<origin xyz="0 -0.075 0.01" rpy="0 0 -1.57"/>
+		<origin xyz="0.1275 -0.075 0.01" rpy="0 0 -0.785"/>
 		<parent link="base_link"/>
 		<child link="sonar_right"/>
 	</joint>
@@ -333,7 +334,7 @@
 		</sensor>
 	</gazebo>
 
-	<gazebo reference="sonar_back">
+	<!--<gazebo reference="sonar_back">
 		<material>Gazebo/Green</material>
 		<sensor type="ray" name="sonar_back">
 		  <pose>0 0 0 0 0 0</pose>
@@ -369,8 +370,9 @@
 		    <radiation>ultrasound</radiation>
 		  </plugin>
 		</sensor>
-	</gazebo>
-
+	</gazebo> -->
+	
+	
 	<gazebo reference="sonar_left">
 		<material>Gazebo/Green</material>
 		<sensor type="ray" name="sonar_left">
@@ -445,5 +447,38 @@
 		    <radiation>ultrasound</radiation>
 		  </plugin>
 		</sensor>
-	</gazebo>	
+	</gazebo>
+
+	<!-- Differential Drive Plugin 
+	<gazebo>
+	    <plugin name="differential_drive_controller"
+		    filename="libgazebo_ros_diff_drive.so">
+		<leftJoint>joint_left_back_wheel</leftJoint>
+		<rightJoint>joint_right_back_wheel</rightJoint>
+		<robotBaseFrame>base_link</robotBaseFrame>
+		<wheelSeparation>0.25</wheelSeparation>
+		<wheelDiameter>0.07</wheelDiameter>
+		<publishWheelJointState>true</publishWheelJointState>
+	     </plugin>
+	</gazebo>  -->
+ 
+	<!-- Gazebo ROS Control Plugin and Planar Move Plugin -->
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace>/hamer_mini</robotNamespace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+			<legacyModeNS>true</legacyModeNS>
+		</plugin>
+	</gazebo> 	
+
+	<gazebo>
+		<plugin name="base_controller" filename="libgazebo_ros_planar_move.so">
+		    <commandTopic>cmd_vel</commandTopic>
+		    <odometryTopic>odom</odometryTopic>
+		    <odometryFrame>odom</odometryFrame>
+		    <odometryRate>100</odometryRate>
+		    <robotBaseFrame>base_link</robotBaseFrame>
+		</plugin>
+	</gazebo> 
+
 </robot> 
