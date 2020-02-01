@@ -40,9 +40,9 @@ Changelog v0.3 - (31-01-2020)
 Changelog v0.4 - (01-02-2020)
 ------------------------------
 
-    -Available SLAM package usage.
-    -Added laser sensor.
-    -Available mapping with laser sensor to gazebo maps.
+-   Available SLAM package usage.
+-   Added laser sensor.
+-   Available mapping with laser sensor to gazebo maps.
 
 ------------------------------------------------------------------------------------------
 
