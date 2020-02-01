@@ -186,7 +186,7 @@
 	</gazebo>
 
 	<!-- Ultrasonic Sonar Sensors Links -->
-	<link name="sonar_front">
+	<!-- <link name="sonar_front">
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
@@ -211,9 +211,9 @@
 		<origin xyz="0.1275 0 0.01" rpy="0 0 0"/>
 		<parent link="base_link"/>
 		<child link="sonar_front"/>
-	</joint>	
+	</joint> -->	
 
-	<!-- <link name="sonar_back">
+	 <link name="sonar_back">
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
@@ -238,7 +238,7 @@
 		<origin xyz="-0.1275 0 0.01" rpy="0 3.14 0"/>
 		<parent link="base_link"/>
 		<child link="sonar_back"/>
-	</joint> -->	
+	</joint> 	
 
 	<!-- Front-Left/Right Sonars -->
 	<link name="sonar_left">
@@ -481,4 +481,167 @@
 		</plugin>
 	</gazebo> 
 
+	<!-- Hokuyo Laser -->
+	 	
+	<link name="hokuyo_link">
+	  <collision>
+	    <origin xyz="0 0 0" rpy="0 0 0"/>
+	    <geometry>
+	  	<cylinder length="0.04" radius="0.02" />
+	    </geometry>
+	  </collision>
+	  <visual>
+	    <origin xyz="0 0 0" rpy="0 0 0"/>
+	    <geometry>
+	  	<cylinder length="0.04" radius="0.02" />
+	    </geometry>
+	  </visual>
+	</link>
+
+	<joint name="hokuyo_joint" type="fixed">
+	  <axis xyz="0 1 0" />
+	  <origin xyz="0.1 0 0.04" rpy="0 0 0"/>
+	  <parent link="base_link"/>
+	  <child link="hokuyo_link"/>
+	</joint>	
+
+	<gazebo reference="hokuyo_link">
+	    <sensor type="ray" name="head_hokuyo_sensor">
+	      <pose>0 0 0 0 0 0</pose>
+	      <visualize>true</visualize>
+	      <update_rate>40</update_rate>
+	      <ray>
+		<scan>
+		  <horizontal>
+		    <samples>720</samples>
+		    <resolution>1</resolution>
+		    <min_angle>-3.1416</min_angle>
+		    <max_angle>3.1416</max_angle>
+		  </horizontal>
+		</scan>
+		<range>
+		  <min>0.10</min>
+		  <max>30.0</max>
+		  <resolution>0.01</resolution>
+		</range>
+		<noise>
+		  <type>gaussian</type>
+		  <mean>0.0</mean>
+		  <stddev>0.01</stddev>
+		</noise>
+	      </ray>
+	      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+		<topicName>/hamer_mini/laser/scan</topicName>
+		<frameName>hokuyo_link</frameName>
+	      </plugin>
+	    </sensor>
+  	</gazebo> 
+
+	<!-- Kinect Camera
+	<link name="camera_link">
+	 	<visual>
+		   <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+		   <geometry>
+		       <mesh filename="package://hamer_mini/meshes/Stl/Intel_RealSense_Depth_Camera_D435.stl" scale="0.00105 0.00105 0.00105"/>
+		   </geometry>
+	 	</visual>
+	 	<collision>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.0730 0.2760 0.0720"/>
+	       		</geometry>
+	 	</collision>
+	 	<inertial>
+			<mass value="0.170" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.001152600" ixy="0.0" ixz="0.0"
+				iyy="0.000148934" iyz="0.0"
+				izz="0.001154654" />
+	 		</inertial>
+	</link>
+	
+	<joint name="camera_rgb_joint" type="fixed">
+	 	<origin xyz="0.1275 0 0.03" rpy="0.0 0.0 0.0"/>
+	 	<parent link="camera_link"/>
+		<child link="camera_rgb_frame" />
+	</joint>
+	
+	<gazebo reference="camera_link">
+		<material>Gazebo/FlatBlack</material>
+	</gazebo>
+	
+	<link name="camera_rgb_frame"/>
+	
+	<joint name="camera_rgb_optical_joint" type="fixed">
+		<origin xyz="0.1275 0 0.03" rpy="-1.57079632679 0 -1.57079632679" />
+		<parent link="camera_rgb_frame" />
+	 	<child link="camera_rgb_optical_frame" />
+	</joint>
+	
+	<link name="camera_rgb_optical_frame"/>
+	
+	<joint name="camera_joint" type="fixed">
+		 <origin xyz="0.1275 0 0.03" rpy="0 0 1.5707969" />
+		 <parent link="base_link"/>
+		 <child link="camera_link"/>
+	</joint>
+	
+	<joint name="camera_depth_joint" type="fixed">
+		 <origin xyz="0.1275 0 0.03" rpy="0 0 0" />
+	         <parent link="camera_link" />
+	 	 <child link="camera_depth_frame" />
+	</joint>
+	
+	<link name="camera_depth_frame"/>
+		<joint name="camera_depth_optical_joint" type="fixed">
+		 <origin xyz="0.1275 0 0.03" rpy="-1.57079632679 0 -1.57079632679" />
+		 <parent link="camera_depth_frame" />
+		 <child link="camera_depth_optical_frame" />
+		</joint>
+	
+	<link name="camera_depth_optical_frame"/>
+
+	<gazebo reference="camera_link">  
+	 	<sensor type="depth" name="camera">
+			<always_on>true</always_on>
+			<update_rate>20.0</update_rate>
+			<camera>
+		 		<horizontal_fov>1.0471975512</horizontal_fov>
+		 		<image>
+					<format>R8G8B8</format>
+					<width>640</width>
+					<height>480</height>
+		 		</image>
+		 		<clip>
+					<near>0.05</near>
+					<far>8.0</far>
+				</clip>
+			</camera>
+		
+			<plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
+		 		<robotNamespace>/hamer_mini</robotNamespace>
+		 		<cameraName>camera</cameraName>
+		 		<alwaysOn>true</alwaysOn>
+		 		<updateRate>10</updateRate>
+		 		<imageTopicName>rgb/image_raw</imageTopicName>
+				 <depthImageTopicName>depth/image_raw</depthImageTopicName>
+				 <pointCloudTopicName>depth/points</pointCloudTopicName>
+				 <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+				 <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+				 <frameName>camera_depth_optical_frame</frameName>
+				 <baseline>0.1</baseline>
+				 <pointCloudCutoff>0.4</pointCloudCutoff>
+				 <distortionK1>0.00000001</distortionK1>
+				 <distortionK2>0.00000001</distortionK2>
+				 <distortionK3>0.00000001</distortionK3>
+				 <distortionT1>0.00000001</distortionT1>
+				 <distortionT2>0.00000001</distortionT2>
+				 <CxPrime>0</CxPrime>
+				 <Cx>0</Cx>
+				 <Cy>0</Cy>
+				 <focalLength>0</focalLength>
+				 <hackBaseline>0</hackBaseline>
+			</plugin>
+	 	</sensor>
+	</gazebo> -->
 </robot> 
