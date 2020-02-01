@@ -3,13 +3,7 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /RobotModel1
-        - /TF1
-        - /Range1
-        - /Range2
-        - /Range3
-        - /Range4
+      Expanded: ~
       Splitter Ratio: 0.5
     Tree Height: 728
   - Class: rviz/Selection
@@ -71,6 +65,27 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_rgb_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         dummy:
           Alpha: 1
           Show Axes: false
@@ -91,11 +106,6 @@ Visualization Manager:
           Show Trail: false
           Value: true
         right_front_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sonar_back:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -128,19 +138,25 @@ Visualization Manager:
         All Enabled: false
         base_link:
           Value: true
+        camera_depth_frame:
+          Value: true
+        camera_depth_optical_frame:
+          Value: true
+        camera_link:
+          Value: true
+        camera_rgb_frame:
+          Value: true
+        camera_rgb_optical_frame:
+          Value: true
         dummy:
           Value: false
         left_back_wheel:
           Value: true
         left_front_wheel:
           Value: true
-        odom:
-          Value: true
         right_back_wheel:
           Value: true
         right_front_wheel:
-          Value: true
-        sonar_back:
           Value: true
         sonar_front:
           Value: true
@@ -154,8 +170,15 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        odom:
+        dummy:
           base_link:
+            camera_link:
+              camera_depth_frame:
+                camera_depth_optical_frame:
+                  {}
+              camera_rgb_frame:
+                camera_rgb_optical_frame:
+                  {}
             left_back_wheel:
               {}
             left_front_wheel:
@@ -163,8 +186,6 @@ Visualization Manager:
             right_back_wheel:
               {}
             right_front_wheel:
-              {}
-            sonar_back:
               {}
             sonar_front:
               {}
@@ -242,25 +263,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.9041723012924194
+      Distance: 0.5684253573417664
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.04565923660993576
-        Y: 0.027435174211859703
-        Z: -0.06528586149215698
+        X: -0.14609062671661377
+        Y: 0.0004528755962383002
+        Z: -0.06669851392507553
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6347966194152832
+      Pitch: 0.48479726910591125
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.3566901981830597
+      Yaw: 1.0816888809204102
     Saved: ~
 Window Geometry:
   Displays:
