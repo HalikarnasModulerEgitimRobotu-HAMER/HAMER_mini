@@ -1,21 +1,20 @@
 <?xml version='1.0'?>
 <robot name="hamer_mini">
-
-	<link name="dummy">
-	<!-- Dummy Link -->
-   	</link>
-	<!-- Dummy Joint -->
+	
+	<!-- Dummy Link 
+	<link name="dummy"/>
   	<joint name="dummy_joint" type="fixed">
      		<parent link="dummy"/>
      		<child link="base_link"/>
-   	</joint>
+   	</joint> -->
 
 	<!-- Base Link -->
 	<link name="base_link">
 	 	<visual>
-		   <origin xyz="0 0 0" rpy="0 0 0" />
+		   <origin xyz="-0.0011104 0.25501 -0.065" rpy="0 0 0" />
 		   <geometry>
-			<box size="0.255 0.150 0.04"/>
+			 <!--<box size="0.255 0.150 0.04"/> -->
+			<mesh filename="package://hamer_mini/meshes/Stl/base_link.STL"/>
 		   </geometry>
 		   <material name="blue">
 		      <color rgba="0 0.5 1 1"/>
@@ -35,13 +34,47 @@
 			    iyy="0.003647" iyz="0.0" izz="0.001004"/>
 		</inertial>
 	</link>
+	
+	<!-- Laser Platform -->
+	<link name="laser_platform_link">
+	 	<visual>
+		   <origin xyz="0 0 0" rpy="0 0 0" />
+		   <geometry>
+			<cylinder length="0.04" radius="0.01" />
+		   </geometry>
+		   <material name="blue">
+		      <color rgba="0 0.5 1 1"/>
+		   </material>
+		</visual>
+		<!-- Base Collision -->
+		<collision>
+		   <origin xyz="0 0 0" rpy="0 0 0" />
+		   <geometry>
+			<cylinder length="0.04" radius="0.01" />
+		   </geometry>
+		</collision>
+		<!-- Base Inertial Elements -->
+		<inertial>
+		   <mass value="0.01"/>
+		   <inertia ixx="0.0" ixy="0.0" ixz="0.0"
+			    iyy="0.0" iyz="0.0" izz="0.0"/>
+		</inertial>
+	</link>
+
+	<joint name="joint_laser_platform_link" type="fixed">
+	   <parent link="base_link"/>
+	   <child link="laser_platform_link"/>
+	   <origin xyz="-0.05 0 0.04" rpy="0 0 0" />
+	   <axis xyz="0 1 0"/>
+	</joint>
 
 	<!-- Right Back Wheel -->
 	<link name="right_back_wheel">
 	 	<visual>
-		   <origin xyz="0 0 0" rpy="1.570795 0 0" />
+		   <origin xyz="0.01 0.01 0" rpy="0 0 0" />
 		   <geometry>
-			<cylinder length="0.026" radius="0.0325" />
+			<mesh filename="package://hamer_mini/meshes/Stl/right_back_wheel.STL"/>
+			<!-- <cylinder length="0.026" radius="0.0325" /> -->
 		   </geometry>
 		   <material name="black">
 		      <color rgba="0.05 0.05 0.05 1"/>
@@ -72,9 +105,10 @@
 	<!-- Right Front Wheel -->
 	<link name="right_front_wheel">
 	 	<visual>
-		   <origin xyz="0 0 0" rpy="1.570795 0 0" />
+		   <origin xyz="-0.01 0.01 0" rpy="0 0 0" />
 		   <geometry>
-			<cylinder length="0.026" radius="0.0325" />
+			<mesh filename="package://hamer_mini/meshes/Stl/right_front_wheel.STL"/>
+			<!-- <cylinder length="0.026" radius="0.0325" /> -->
 		   </geometry>
 		   <material name="black">
 		      <color rgba="0.05 0.05 0.05 1"/>
@@ -105,9 +139,10 @@
 	<!-- Left Back Wheel -->
 	<link name="left_back_wheel">
 	 	<visual>
-		   <origin xyz="0 0 0" rpy="1.570795 0 0" />
+		   <origin xyz="0.01 -0.01 0" rpy="0 0 0" />
 		   <geometry>
-			<cylinder length="0.026" radius="0.0325" />
+			<mesh filename="package://hamer_mini/meshes/Stl/left_back_wheel.STL"/>
+			<!-- <cylinder length="0.026" radius="0.0325" /> -->
 		   </geometry>
 		   <material name="black">
 		      <color rgba="0.05 0.05 0.05 1"/>
@@ -138,9 +173,10 @@
 	<!-- Left Front Wheel -->
 	<link name="left_front_wheel">
 	 	<visual>
-		   <origin xyz="0 0 0" rpy="1.570795 0 0" />
+		   <origin xyz="-0.01 -0.01 0" rpy="0 0 0" />
 		   <geometry>
-			<cylinder length="0.026" radius="0.0325" />
+			<mesh filename="package://hamer_mini/meshes/Stl/left_front_wheel.STL"/>
+			<!--<cylinder length="0.026" radius="0.0325" /> -->
 		   </geometry>
 		   <material name="black">
 		      <color rgba="0.05 0.05 0.05 1"/>
@@ -183,6 +219,15 @@
 	</gazebo>
 	<gazebo reference="left_back_wheel">
 	   <material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="camera_link">
+	   <material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="laser_platform_link">
+	   <material>Gazebo/Blue</material>
+	</gazebo>
+	<gazebo reference="tfmini_link">
+	   <material>Gazebo/Red</material>
 	</gazebo>
 
 	<!-- Ultrasonic Sonar Sensors Links -->
@@ -296,7 +341,7 @@
 	</joint>
 
 	<!-- Ultrasonic Sonar Sensors Gazebo Ref. -->
-	<gazebo reference="sonar_front">
+	<!-- <gazebo reference="sonar_front">
 		<material>Gazebo/Green</material>
 		<sensor type="ray" name="sonar_front">
 		  <pose>0 0 0 0 0 0</pose>
@@ -306,14 +351,14 @@
 		      <horizontal>
 		        <samples>5</samples>
 		        <resolution>1.0</resolution>
-		        <min_angle>-0.3</min_angle>
-		        <max_angle>0.3</max_angle>
+		        <min_angle>-0.03</min_angle>
+		        <max_angle>0.03</max_angle>
 		      </horizontal>
 		      <vertical>
 		        <samples>5</samples>
 		        <resolution>1</resolution>
-		        <min_angle>-0.3</min_angle>
-		        <max_angle>0.3</max_angle>
+		        <min_angle>-0.03</min_angle>
+		        <max_angle>0.03</max_angle>
 		      </vertical>
 		    </scan>
 		    <range>
@@ -332,9 +377,10 @@
 		    <radiation>ultrasound</radiation>
 		  </plugin>
 		</sensor>
-	</gazebo>
+	</gazebo> -->
 
-	<!--<gazebo reference="sonar_back">
+	<!-- Sonar Back -->
+	<gazebo reference="sonar_back">
 		<material>Gazebo/Green</material>
 		<sensor type="ray" name="sonar_back">
 		  <pose>0 0 0 0 0 0</pose>
@@ -344,14 +390,14 @@
 		      <horizontal>
 		        <samples>5</samples>
 		        <resolution>1.0</resolution>
-		        <min_angle>-0.3</min_angle>
-		        <max_angle>0.3</max_angle>
+		        <min_angle>-0.03</min_angle>
+		        <max_angle>0.03</max_angle>
 		      </horizontal>
 		      <vertical>
 		        <samples>5</samples>
 		        <resolution>1</resolution>
-		        <min_angle>-0.3</min_angle>
-		        <max_angle>0.3</max_angle>
+		        <min_angle>-0.03</min_angle>
+		        <max_angle>0.03</max_angle>
 		      </vertical>
 		    </scan>
 		    <range>
@@ -370,7 +416,7 @@
 		    <radiation>ultrasound</radiation>
 		  </plugin>
 		</sensor>
-	</gazebo> -->
+	</gazebo> 
 	
 	
 	<gazebo reference="sonar_left">
@@ -383,14 +429,14 @@
 		      <horizontal>
 		        <samples>5</samples>
 		        <resolution>1.0</resolution>
-		        <min_angle>-0.3</min_angle>
-		        <max_angle>0.3</max_angle>
+		        <min_angle>-0.2</min_angle>
+		        <max_angle>0.2</max_angle>
 		      </horizontal>
 		      <vertical>
 		        <samples>5</samples>
 		        <resolution>1</resolution>
-		        <min_angle>-0.3</min_angle>
-		        <max_angle>0.3</max_angle>
+		        <min_angle>-0.03</min_angle>
+		        <max_angle>0.03</max_angle>
 		      </vertical>
 		    </scan>
 		    <range>
@@ -421,14 +467,14 @@
 		      <horizontal>
 		        <samples>5</samples>
 		        <resolution>1.0</resolution>
-		        <min_angle>-0.3</min_angle>
-		        <max_angle>0.3</max_angle>
+		        <min_angle>-0.03</min_angle>
+		        <max_angle>0.03</max_angle>
 		      </horizontal>
 		      <vertical>
 		        <samples>5</samples>
 		        <resolution>1</resolution>
-		        <min_angle>-0.3</min_angle>
-		        <max_angle>0.3</max_angle>
+		        <min_angle>-0.03</min_angle>
+		        <max_angle>0.03</max_angle>
 		      </vertical>
 		    </scan>
 		    <range>
@@ -453,12 +499,27 @@
 	<gazebo>
 	    <plugin name="differential_drive_controller"
 		    filename="libgazebo_ros_diff_drive.so">
-		<leftJoint>joint_left_back_wheel</leftJoint>
-		<rightJoint>joint_right_back_wheel</rightJoint>
+		<legacyMode>false</legacyMode>
+		<alwaysOn>true</alwaysOn>
+		<updateRate>1000.0</updateRate>
+		<leftJoint>joint_left_back_wheel, joint_left_front_wheel</leftJoint>
+		<rightJoint>joint_right_back_wheel, joint_right_front_wheel</rightJoint>
 		<robotBaseFrame>base_link</robotBaseFrame>
 		<wheelSeparation>0.25</wheelSeparation>
 		<wheelDiameter>0.07</wheelDiameter>
 		<publishWheelJointState>true</publishWheelJointState>
+		<wheelDiameter>0.2</wheelDiameter>
+		<wheelTorque>10</wheelTorque>
+		<publishTf>1</publishTf>
+		<odometryFrame>map</odometryFrame>
+		<commandTopic>cmd_vel</commandTopic>
+		<odometryTopic>odom</odometryTopic>
+		<robotBaseFrame>base_link</robotBaseFrame>
+		<wheelAcceleration>2.8</wheelAcceleration>
+		<publishWheelJointState>true</publishWheelJointState>
+		<publishWheelTF>false</publishWheelTF>
+		<odometrySource>world</odometrySource>
+		<rosDebugLevel>Debug</rosDebugLevel>
 	     </plugin>
 	</gazebo>  -->
  
@@ -466,8 +527,8 @@
 	<gazebo>
 		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
 			<robotNamespace>/hamer_mini</robotNamespace>
-			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-			<legacyModeNS>true</legacyModeNS>
+			<!--<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType> -->
+			<legacyModeNS>false</legacyModeNS>
 		</plugin>
 	</gazebo> 	
 
@@ -478,10 +539,10 @@
 		    <odometryFrame>odom</odometryFrame>
 		    <odometryRate>100</odometryRate>
 		    <robotBaseFrame>base_link</robotBaseFrame>
-		</plugin>
+		</plugin> 
 	</gazebo> 
 
-	<!-- Hokuyo Laser -->
+	<!-- Hokuyo Laser 
 	 	
 	<link name="hokuyo_link">
 	  <collision>
@@ -500,7 +561,7 @@
 
 	<joint name="hokuyo_joint" type="fixed">
 	  <axis xyz="0 1 0" />
-	  <origin xyz="0.1 0 0.04" rpy="0 0 0"/>
+	  <origin xyz="-0.05 0 0.07" rpy="0 0 0"/>
 	  <parent link="base_link"/>
 	  <child link="hokuyo_link"/>
 	</joint>	
@@ -521,7 +582,7 @@
 		</scan>
 		<range>
 		  <min>0.10</min>
-		  <max>30.0</max>
+		  <max>10.0</max>
 		  <resolution>0.01</resolution>
 		</range>
 		<noise>
@@ -535,10 +596,136 @@
 		<frameName>hokuyo_link</frameName>
 	      </plugin>
 	    </sensor>
-  	</gazebo> 
+  	</gazebo>  -->
 
-	<!-- Kinect Camera
-	<link name="camera_link">
+	<!-- Test tfmini Lidar -->
+	<link name="tfmini_link">
+	  <collision>
+	    <origin xyz="0 0 0" rpy="0 0 0"/>
+	    <geometry>
+	  	<box size="0.042 0.015 0.016"/>
+	    </geometry>
+	  </collision>
+	  <visual>
+	    <origin xyz="0 0 0" rpy="0 0 0"/>
+	    <geometry>
+	  	<box size="0.015 0.042 0.016"/>
+	    </geometry>
+	  </visual>
+	</link>
+
+	<joint name="tfmini_joint" type="fixed">
+	  <axis xyz="0 1 0" />
+	  <origin xyz="-0.05 0 0.07" rpy="0 0 0"/>
+	  <parent link="base_link"/>
+	  <child link="tfmini_link"/>
+	</joint>	
+
+	<gazebo reference="tfmini_link">
+	    <sensor type="ray" name="tfmini_lidar_sensor">
+	      <pose>0 0 0 0 0 0</pose>
+	      <visualize>true</visualize>
+	      <update_rate>40</update_rate>
+	      <ray>
+		<scan>
+		  <horizontal>
+		    <samples>240</samples>
+		    <resolution>1</resolution>
+		    <min_angle>-0.401425728</min_angle> <!--360 dereceden 2.3 dereceye cevrildi -->
+		    <max_angle>0.401425728</max_angle>
+		  </horizontal>
+		</scan>
+		<range>
+		  <min>0.3</min>
+		  <max>5.0</max>
+		  <resolution>0.01</resolution>
+		</range>
+		<noise>
+		  <type>gaussian</type>
+		  <mean>0.0</mean>
+		  <stddev>0.01</stddev>
+		</noise>
+	      </ray>
+	      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+		<topicName>/hamer_mini/laser/scan</topicName>
+		<frameName>tfmini_link</frameName>
+	      </plugin>
+	    </sensor>
+  	</gazebo>
+	<!-- Test Camera Plugin and Link -->
+	  <joint name="camera_joint" type="fixed">
+	    <axis xyz="0 1 0" />
+	    <origin xyz="0.1275 0 0.028" rpy="0 0 0"/>
+	    <parent link="base_link"/>
+	    <child link="camera_link"/>
+	  </joint>
+
+	  <link name="camera_link">
+	    <collision>
+	      <origin xyz="0 0 0" rpy="0 0 0"/>
+	      <geometry>
+	    <box size="0.02 0.05 0.015"/>
+	      </geometry>
+	    </collision>
+
+	    <visual>
+	      <origin xyz="0 0 0" rpy="1.57 0 1.57"/>
+	      <geometry>
+	    	<mesh filename="package://hamer_mini/meshes/Stl/Intel_RealSense_Depth_Camera_D435.stl" scale="0.00105 0.00105 0.00105"/> 
+		<!--<box size="0.02 0.05 0.015"/> -->
+	      </geometry>
+	      <material name="red"/>
+	    </visual>
+
+	    <inertial>
+	      <mass value="1e-5" />
+	      <origin xyz="0 0 0" rpy="0 0 0"/>
+	      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+	    </inertial>
+	  </link>
+
+	  <gazebo reference="camera_link">
+	    <sensor type="camera" name="camera1">
+	      <update_rate>30.0</update_rate>
+	      <camera name="head">
+		<horizontal_fov>1.3962634</horizontal_fov>
+		<image>
+		  <width>800</width>
+		  <height>800</height>
+		  <format>R8G8B8</format>
+		</image>
+		<clip>
+		  <near>0.02</near>
+		  <far>300</far>
+		</clip>
+		<noise>
+		  <type>gaussian</type>
+		  <!-- Noise is sampled independently per pixel on each frame.
+		       That pixel's noise value is added to each of its color
+		       channels, which at that point lie in the range [0,1]. -->
+		  <mean>0.0</mean>
+		  <stddev>0.007</stddev>
+		</noise>
+	      </camera>
+	      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+		<alwaysOn>true</alwaysOn>
+		<updateRate>0.0</updateRate>
+		<cameraName>hamer_mini/camera1</cameraName>
+		<imageTopicName>image_raw</imageTopicName>
+		<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+		<frameName>camera_link</frameName>
+		<hackBaseline>0.07</hackBaseline>
+		<distortionK1>0.0</distortionK1>
+		<distortionK2>0.0</distortionK2>
+		<distortionK3>0.0</distortionK3>
+		<distortionT1>0.0</distortionT1>
+		<distortionT2>0.0</distortionT2>
+	      </plugin>
+	    </sensor>
+	  </gazebo>
+
+	<!-- Camera -->
+	<!-- <link name="camera_link">
 	 	<visual>
 		   <origin rpy="1.570796 0 0" xyz="0 0 0"/>
 		   <geometry>
@@ -560,88 +747,50 @@
 	 		</inertial>
 	</link>
 	
-	<joint name="camera_rgb_joint" type="fixed">
-	 	<origin xyz="0.1275 0 0.03" rpy="0.0 0.0 0.0"/>
-	 	<parent link="camera_link"/>
-		<child link="camera_rgb_frame" />
-	</joint>
-	
-	<gazebo reference="camera_link">
-		<material>Gazebo/FlatBlack</material>
-	</gazebo>
-	
-	<link name="camera_rgb_frame"/>
-	
-	<joint name="camera_rgb_optical_joint" type="fixed">
-		<origin xyz="0.1275 0 0.03" rpy="-1.57079632679 0 -1.57079632679" />
-		<parent link="camera_rgb_frame" />
-	 	<child link="camera_rgb_optical_frame" />
-	</joint>
-	
-	<link name="camera_rgb_optical_frame"/>
-	
 	<joint name="camera_joint" type="fixed">
-		 <origin xyz="0.1275 0 0.03" rpy="0 0 1.5707969" />
-		 <parent link="base_link"/>
-		 <child link="camera_link"/>
+	    <axis xyz="0 1 0" />
+	    <origin xyz="0.1275 0 0.03" rpy="0 0 1.57"/>
+	    <parent link="base_link"/>
+	    <child link="camera_link"/>
 	</joint>
-	
-	<joint name="camera_depth_joint" type="fixed">
-		 <origin xyz="0.1275 0 0.03" rpy="0 0 0" />
-	         <parent link="camera_link" />
-	 	 <child link="camera_depth_frame" />
-	</joint>
-	
-	<link name="camera_depth_frame"/>
-		<joint name="camera_depth_optical_joint" type="fixed">
-		 <origin xyz="0.1275 0 0.03" rpy="-1.57079632679 0 -1.57079632679" />
-		 <parent link="camera_depth_frame" />
-		 <child link="camera_depth_optical_frame" />
-		</joint>
-	
-	<link name="camera_depth_optical_frame"/>
 
 	<gazebo reference="camera_link">  
-	 	<sensor type="depth" name="camera">
-			<always_on>true</always_on>
-			<update_rate>20.0</update_rate>
+	 	<sensor type="camera" name="camera1">
+			<update_rate>30.0</update_rate>
 			<camera>
-		 		<horizontal_fov>1.0471975512</horizontal_fov>
+		 		<horizontal_fov>1.3962634</horizontal_fov>
 		 		<image>
 					<format>R8G8B8</format>
-					<width>640</width>
-					<height>480</height>
+					<width>800</width>
+					<height>800</height>
 		 		</image>
 		 		<clip>
-					<near>0.05</near>
-					<far>8.0</far>
+					<near>0.02</near>
+					<far>300</far>
 				</clip>
+				<noise>
+				   <type>gaussian</type>
+				   <mean>0.0</mean>
+				   <stddev>0.007</stddev>
+				</noise>
 			</camera>
 		
-			<plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
-		 		<robotNamespace>/hamer_mini</robotNamespace>
-		 		<cameraName>camera</cameraName>
-		 		<alwaysOn>true</alwaysOn>
-		 		<updateRate>10</updateRate>
-		 		<imageTopicName>rgb/image_raw</imageTopicName>
-				 <depthImageTopicName>depth/image_raw</depthImageTopicName>
-				 <pointCloudTopicName>depth/points</pointCloudTopicName>
-				 <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
-				 <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
-				 <frameName>camera_depth_optical_frame</frameName>
-				 <baseline>0.1</baseline>
-				 <pointCloudCutoff>0.4</pointCloudCutoff>
-				 <distortionK1>0.00000001</distortionK1>
-				 <distortionK2>0.00000001</distortionK2>
-				 <distortionK3>0.00000001</distortionK3>
-				 <distortionT1>0.00000001</distortionT1>
-				 <distortionT2>0.00000001</distortionT2>
-				 <CxPrime>0</CxPrime>
-				 <Cx>0</Cx>
-				 <Cy>0</Cy>
-				 <focalLength>0</focalLength>
-				 <hackBaseline>0</hackBaseline>
-			</plugin>
-	 	</sensor>
-	</gazebo> -->
+	<plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+		 <robotNamespace>/hamer_mini</robotNamespace>
+		 <cameraName>camera</cameraName>
+		 <alwaysOn>true</alwaysOn>
+		 <updateRate>0.0</updateRate>
+		 <imageTopicName>image_raw</imageTopicName>
+		 <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+
+		<frameName>camera_link</frameName>
+		<hackBaseline>0.07</hackBaseline>
+		<distortionK1>0.0</distortionK1>
+		<distortionK2>0.0</distortionK2>
+		<distortionK3>0.0</distortionK3>
+		<distortionT1>0.0</distortionT1>
+		<distortionT2>0.0</distortionT2>
+	</plugin>
+ </sensor> 
+</gazebo> -->
 </robot> 
