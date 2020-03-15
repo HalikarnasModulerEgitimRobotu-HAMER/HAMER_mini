@@ -56,4 +56,29 @@ SLAM Launching:
 
 ------------------------------------------------------------------------------------------
 
+# HAMER_mini v0.5
+
+Changelog v0.5 - (15-03-2020)
+------------------------------
+
+-   Added Hamer Mini's chasis meshes
+-   Added camera module.
+-   Changed lidar's properties (Lidar is now in tfmini properties.)
+-   Added hamer_mini_control package (This package provides communication with Hamer Mini's Arduino controller.)
+
+        $ roslaunch hamer_mini_control hamer_mini_control.launch   
+        
+-   Image acquisition from the camera has been made possible.
+-   Added hamer_mini_keyboard package (This package provided Hamer Mini's keyboard controlling.)
+
+        $ rosrun hamer_mini_keyboard hamer_mini_keyboard.py
+
+NOTE: Before running keyboard code, run on terminal this codes:
+        
+        $ cd ~/hamer_mini_keyboard/scripts
+        $ chmod +x hamer_mini_keyboard.py
+        
+-   Some bug fixes.
+
+--------------------------------------------------------------------------------------------
 Contributors: Alim Kerem Erdoğmuş
