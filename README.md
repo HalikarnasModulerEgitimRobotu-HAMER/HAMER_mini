@@ -62,13 +62,12 @@ Changelog v0.5 - (15-03-2020)
 ------------------------------
 
 -   Added Hamer Mini's chasis and camera meshes (Camera meshes from Intel Realsense D435, https://github.com/IntelRealSense/librealsense)
--   Added camera module.
+-   Added camera module (Image acquisition from the camera has been made possible.)
 -   Changed lidar's properties (Lidar is now in tfmini properties.)
 -   Added hamer_mini_control package (This package provides communication with Hamer Mini's Arduino controller.)
 
         $ roslaunch hamer_mini_control hamer_mini_control.launch   
-        
--   Image acquisition from the camera has been made possible.
+           
 -   Added hamer_mini_keyboard package (This package provided Hamer Mini's keyboard controlling.)
 
         $ rosrun hamer_mini_keyboard hamer_mini_keyboard.py
