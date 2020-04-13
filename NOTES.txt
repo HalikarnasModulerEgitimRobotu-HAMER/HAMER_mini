@@ -1,0 +1,9 @@
+# IMPORTANT NOTES ABOUT HAMER MINI ROBOT ROS PACKAGE - Last Update: 13.4.20
+-----------------------------------------------------------------------
+
+- If you are encountering a freeze problem during the "catkin_make" process, try using the "catkin_make_isolated" command!
+- If you have old versions of the robot, we recommend that you delete old robot packages and install new packages after each update.
+- The hamer_mini control package was made to control the actual hardware of the robot. It cannot be used in simulation environment.
+- Hamer Mini Robot is in beta stage and is a ROS robot model under development. It may contain many errors and deficiencies. In case of any error, you can report the problem to "akerdogmus@gmail.com".
+
+Contributors: AKE
