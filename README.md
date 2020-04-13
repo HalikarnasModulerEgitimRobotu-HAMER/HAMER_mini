@@ -90,5 +90,7 @@ Changelog v0.5.1 Minor Update - (13.04.2020)
 -   Package requirements can now be used by downloading the workspace file to the src folder (such as slam_gmapping and gazebo_ros_pkg).
 -   Some bug fixes
 
+NOTE: If you are encountering a freeze problem during the "catkin_make" process, try using the "catkin_make_isolated" command!
+
 --------------------------------------------------------------------------------------------
 Contributors: Alim Kerem Erdoğmuş
