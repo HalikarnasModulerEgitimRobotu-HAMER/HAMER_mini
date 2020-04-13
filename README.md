@@ -5,7 +5,7 @@ For HAMER main model : https://github.com/Akerdogmus/hamer
 
 Rviz Launching:
 
-    $ roslaunch hamer_mini hamermini_rviz.launch model:=hamer_mini.urdf
+    $ roslaunch hamer_mini hamermini_rviz.launch
     
 Gazebo Launching:
 
@@ -20,9 +20,8 @@ Changelog v0.2 - (29-01-2020)
 
 Requirements:
 
-- In order for the sensors to work properly, "gazebo_ros_pkgs" files must be downloaded.
+- In order for the sensors to work properly, "gazebo_ros_pkgs" files must be downloaded to your workspace.
 
-        $ cd ~/hamer_mini/src
         $ git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b melodic-devel
 
 ----------------------------------------------------------------------------------
@@ -45,9 +44,8 @@ Changelog v0.4 - (01-02-2020)
 
 Requirements:
 
-- In order for the SLAM to work, "slam_gmapping" package must be downloaded.
+- In order for the SLAM to work, "slam_gmapping" package must be downloaded to your workspace.
     
-        $ cd ~/hamer_mini/src
         $ git clone https://github.com/ros-perception/slam_gmapping.git -b melodic-devel
 
 SLAM Launching:
@@ -64,7 +62,7 @@ Changelog v0.5 - (15-03-2020)
 -   Added Hamer Mini's chasis and camera meshes (Camera meshes from Intel Realsense D435, https://github.com/IntelRealSense/librealsense)
 -   Added camera module (Image acquisition from the camera has been made possible.)
 -   Changed lidar's properties (Lidar is now in tfmini properties.)
--   Added hamer_mini_control package (This package provides communication with Hamer Mini's Arduino controller.)
+-   Added hamer_mini_control package (This package provides communication with Hamer Mini's Arduino controller. Only using with Hamer_Mini Robot, not for simulations).
 
         $ roslaunch hamer_mini_control hamer_mini_control.launch   
            
@@ -78,6 +76,19 @@ NOTE: Before running keyboard code, run on terminal this codes:
         $ chmod +x hamer_mini_keyboard.py
         
 -   Some bug fixes.
+--------------------------------------------------------------------------------------------
+
+# HAMER_mini v0.5.1
+
+Changelog v0.5.1 Minor Update - (13.04.2020)
+-------------------------------
+
+-   Fixed hamer_mini package's package.xml and CMakeLists.txt files.
+-   Fixed "hamermini_gazebo.launch" file. Now, when the gazebo launch file is run alone, the model can be displayed on the screen.
+-   Fixed "hamermini_rviz.launch" file. Now all the display tools of the robot come to the rviz menu automatically. Also, when launching the rviz, there is no need to add a "model" to the end of the command.
+-   Some changes have been made to the hamer_mini.urdf file. The movement of the wheels was stopped until the problem of wheel movement was resolved (It will be fixed in the next update).
+-   Package requirements can now be used by downloading the workspace file to the src folder (such as slam_gmapping and gazebo_ros_pkg).
+-   Some bug fixes
 
 --------------------------------------------------------------------------------------------
 Contributors: Alim Kerem Erdoğmuş
