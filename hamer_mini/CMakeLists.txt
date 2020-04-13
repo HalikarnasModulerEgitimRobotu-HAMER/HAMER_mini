@@ -10,6 +10,12 @@ catkin_package(
 #  DEPENDS system_lib
 )
 
+install(
+  DIRECTORY launch rviz
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+
+)
+
 
 include_directories(
 # include
