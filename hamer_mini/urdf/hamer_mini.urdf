@@ -71,7 +71,7 @@
 	<!-- Right Back Wheel -->
 	<link name="right_back_wheel">
 	 	<visual>
-		   <origin xyz="0.01 0.01 0" rpy="0 0 0" />
+		   <origin xyz="0.01 0.01 0.011" rpy="0 0 0" />
 		   <geometry>
 			<mesh filename="package://hamer_mini/meshes/Stl/right_back_wheel.STL"/>
 			<!-- <cylinder length="0.026" radius="0.0325" /> -->
@@ -82,7 +82,7 @@
 		</visual>
 		<!-- Right Back Wheel Collision -->
 		<collision>
-		   <origin xyz="0 0 0" rpy="1.570795 0 0" />
+		   <origin xyz="0.01 0.01 0.011" rpy="0 0 0" />
 		   <geometry>
 			<cylinder length="0.026" radius="0.0325" />
 		   </geometry>
@@ -105,7 +105,7 @@
 	<!-- Right Front Wheel -->
 	<link name="right_front_wheel">
 	 	<visual>
-		   <origin xyz="-0.01 0.01 0" rpy="0 0 0" />
+		   <origin xyz="-0.01 0.01 0.011" rpy="0 0 0" />
 		   <geometry>
 			<mesh filename="package://hamer_mini/meshes/Stl/right_front_wheel.STL"/>
 			<!-- <cylinder length="0.026" radius="0.0325" /> -->
@@ -116,7 +116,7 @@
 		</visual>
 		<!-- Right Front Wheel Collision -->
 		<collision>
-		   <origin xyz="0 0 0" rpy="1.570795 0 0" />
+		   <origin xyz="-0.01 0.01 0.011" rpy="0 0 0" />
 		   <geometry>
 			<cylinder length="0.026" radius="0.0325" />
 		   </geometry>
@@ -139,7 +139,7 @@
 	<!-- Left Back Wheel -->
 	<link name="left_back_wheel">
 	 	<visual>
-		   <origin xyz="0.01 -0.01 0" rpy="0 0 0" />
+		   <origin xyz="0.01 -0.01 0.011" rpy="0 0 0" />
 		   <geometry>
 			<mesh filename="package://hamer_mini/meshes/Stl/left_back_wheel.STL"/>
 			<!-- <cylinder length="0.026" radius="0.0325" /> -->
@@ -150,7 +150,7 @@
 		</visual>
 		<!-- Left Back Wheel Collision -->
 		<collision>
-		   <origin xyz="0 0 0" rpy="1.570795 0 0" />
+		   <origin xyz="0.01 -0.01 0.011" rpy="0 0 0" />
 		   <geometry>
 			<cylinder length="0.026" radius="0.0325" />
 		   </geometry>
@@ -173,7 +173,7 @@
 	<!-- Left Front Wheel -->
 	<link name="left_front_wheel">
 	 	<visual>
-		   <origin xyz="-0.01 -0.01 0" rpy="0 0 0" />
+		   <origin xyz="-0.01 -0.01 0.011" rpy="0 0 0" />
 		   <geometry>
 			<mesh filename="package://hamer_mini/meshes/Stl/left_front_wheel.STL"/>
 			<!--<cylinder length="0.026" radius="0.0325" /> -->
@@ -184,7 +184,7 @@
 		</visual>
 		<!-- Left Front Wheel Collision -->
 		<collision>
-		   <origin xyz="0 0 0" rpy="1.570795 0 0" />
+		   <origin xyz="-0.01 -0.01 0.011" rpy="0 0 0" />
 		   <geometry>
 			<cylinder length="0.026" radius="0.0325" />
 		   </geometry>
@@ -527,7 +527,7 @@
 	<gazebo>
 		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
 			<robotNamespace>/hamer_mini</robotNamespace>
-			<!--<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType> -->
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
 			<legacyModeNS>false</legacyModeNS>
 		</plugin>
 	</gazebo> 	
