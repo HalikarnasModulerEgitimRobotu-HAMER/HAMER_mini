@@ -1,12 +1,12 @@
 <?xml version='1.0'?>
 <robot name="hamer_mini">
 	
-	<!-- Dummy Link 
+	<!-- Dummy Link -->
 	<link name="dummy"/>
   	<joint name="dummy_joint" type="fixed">
      		<parent link="dummy"/>
      		<child link="base_link"/>
-   	</joint> -->
+   	</joint> 
 
 	<!-- Base Link -->
 	<link name="base_link">
@@ -71,7 +71,7 @@
 	<!-- Right Back Wheel -->
 	<link name="right_back_wheel">
 	 	<visual>
-		   <origin xyz="0.01 0.01 0.011" rpy="0 0 0" />
+		   <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
 		   <geometry>
 			<mesh filename="package://hamer_mini/meshes/Stl/right_back_wheel.STL"/>
 			<!-- <cylinder length="0.026" radius="0.0325" /> -->
@@ -82,13 +82,14 @@
 		</visual>
 		<!-- Right Back Wheel Collision -->
 		<collision>
-		   <origin xyz="0.01 0.01 0.011" rpy="0 0 0" />
+		   <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
 		   <geometry>
 			<cylinder length="0.026" radius="0.0325" />
 		   </geometry>
 		</collision>
 		<!-- Right Back Wheel Inertial Elements -->
 		<inertial>
+		   <!--<origin xyz="-0.06 -0.076 0.011" rpy="0 0 0" />-->
 		   <mass value="0.01"/>
 		   <inertia ixx="0.000003204" ixy="0.0" ixz="0.0"
 			    iyy="0.000003204" iyz="0.0" izz="0.00005281"/>
@@ -98,14 +99,14 @@
 	<joint name="joint_right_back_wheel" type="continuous">
 	   <parent link="base_link"/>
 	   <child link="right_back_wheel"/>
-	   <origin xyz="-0.07 -0.086 0" rpy="0 0 0" />
+	   <origin xyz="-0.06 -0.08 0.011" rpy="0 0 0" />
 	   <axis xyz="0 1 0"/>
 	</joint>
 
 	<!-- Right Front Wheel -->
 	<link name="right_front_wheel">
 	 	<visual>
-		   <origin xyz="-0.01 0.01 0.011" rpy="0 0 0" />
+		   <origin xyz="-0.0 0.0 0.0" rpy="0 0 0" />
 		   <geometry>
 			<mesh filename="package://hamer_mini/meshes/Stl/right_front_wheel.STL"/>
 			<!-- <cylinder length="0.026" radius="0.0325" /> -->
@@ -116,13 +117,14 @@
 		</visual>
 		<!-- Right Front Wheel Collision -->
 		<collision>
-		   <origin xyz="-0.01 0.01 0.011" rpy="0 0 0" />
+		   <origin xyz="-0.0 0.0 0.0" rpy="0 0 0" />
 		   <geometry>
 			<cylinder length="0.026" radius="0.0325" />
 		   </geometry>
 		</collision>
 		<!-- Right Front Wheel Inertial Elements -->
 		<inertial>
+		   <!--<origin xyz="0.06 -0.076 0.011" rpy="0 0 0" />-->
 		   <mass value="0.01"/>
 		   <inertia ixx="0.000003204" ixy="0.0" ixz="0.0"
 			    iyy="0.000003204" iyz="0.0" izz="0.00005281"/>
@@ -132,14 +134,14 @@
 	<joint name="joint_right_front_wheel" type="continuous">
 	   <parent link="base_link"/>
 	   <child link="right_front_wheel"/>
-	   <origin xyz="0.07 -0.086 0" rpy="0 0 0" />
+	   <origin xyz="0.06 -0.08 0.011" rpy="0 0 0" />
 	   <axis xyz="0 1 0"/>
 	</joint>
 
 	<!-- Left Back Wheel -->
 	<link name="left_back_wheel">
 	 	<visual>
-		   <origin xyz="0.01 -0.01 0.011" rpy="0 0 0" />
+		   <origin xyz="0.0 -0.0 0.0" rpy="0 0 0" />
 		   <geometry>
 			<mesh filename="package://hamer_mini/meshes/Stl/left_back_wheel.STL"/>
 			<!-- <cylinder length="0.026" radius="0.0325" /> -->
@@ -150,13 +152,14 @@
 		</visual>
 		<!-- Left Back Wheel Collision -->
 		<collision>
-		   <origin xyz="0.01 -0.01 0.011" rpy="0 0 0" />
+		   <origin xyz="0.0 -0.0 0.0" rpy="0 0 0" />
 		   <geometry>
 			<cylinder length="0.026" radius="0.0325" />
 		   </geometry>
 		</collision>
 		<!-- Left Back Wheel Inertial Elements -->
 		<inertial>
+		   <!--<origin xyz="-0.06 0.076 0.011" rpy="0 0 0" />-->
 		   <mass value="0.01"/>
 		   <inertia ixx="0.000003204" ixy="0.0" ixz="0.0"
 			    iyy="0.000003204" iyz="0.0" izz="0.00005281"/>
@@ -166,14 +169,14 @@
 	<joint name="joint_left_back_wheel" type="continuous">
 	   <parent link="base_link"/>
 	   <child link="left_back_wheel"/>
-	   <origin xyz="-0.07 0.086 0" rpy="0 0 0" />
+	   <origin xyz="-0.06 0.08 0.011" rpy="0 0 0" />
 	   <axis xyz="0 1 0"/>
 	</joint>
 
 	<!-- Left Front Wheel -->
 	<link name="left_front_wheel">
 	 	<visual>
-		   <origin xyz="-0.01 -0.01 0.011" rpy="0 0 0" />
+		   <origin xyz="-0.0 -0.0 0.0" rpy="0 0 0" />
 		   <geometry>
 			<mesh filename="package://hamer_mini/meshes/Stl/left_front_wheel.STL"/>
 			<!--<cylinder length="0.026" radius="0.0325" /> -->
@@ -184,13 +187,14 @@
 		</visual>
 		<!-- Left Front Wheel Collision -->
 		<collision>
-		   <origin xyz="-0.01 -0.01 0.011" rpy="0 0 0" />
+		   <origin xyz="-0.0 -0.0 0.0" rpy="0 0 0" />
 		   <geometry>
 			<cylinder length="0.026" radius="0.0325" />
 		   </geometry>
 		</collision>
 		<!--Left Front Wheel Inertial Elements -->
 		<inertial>
+		   <!--<origin xyz="0.06 0.076 0.011" rpy="0 0 0" />-->
 		   <mass value="0.01"/>
 		   <inertia ixx="0.000003204" ixy="0.0" ixz="0.0"
 			    iyy="0.000003204" iyz="0.0" izz="0.00005281"/>
@@ -200,7 +204,7 @@
 	<joint name="joint_left_front_wheel" type="continuous">
 	   <parent link="base_link"/>
 	   <child link="left_front_wheel"/>
-	   <origin xyz="0.07 0.086 0" rpy="0 0 0" />
+	   <origin xyz="0.06 0.08 0.011" rpy="0 0 0" />
 	   <axis xyz="0 1 0"/>
 	</joint>
 
@@ -209,15 +213,39 @@
 	   <material>Gazebo/Blue</material>
 	</gazebo>
 	<gazebo reference="right_front_wheel">
+	    <kp>1000000.0</kp>
+	    <kd>100.0</kd>
+	    <mu1>1.0</mu1>
+	    <mu2>1.0</mu2>
+	    <maxVel>1.0</maxVel>
+	    <minDepth>0.00</minDepth>
 	   <material>Gazebo/Black</material>
 	</gazebo>
 	<gazebo reference="right_back_wheel">
-	   <material>Gazebo/Black</material>
+	    <kp>1000000.0</kp>
+	    <kd>100.0</kd>
+	    <mu1>1.0</mu1>
+	    <mu2>1.0</mu2>
+	    <maxVel>1.0</maxVel>
+	    <minDepth>0.00</minDepth>
+	   <material>Gazebo/Black</material>	
 	</gazebo>
 	<gazebo reference="left_front_wheel">
+	    <kp>1000000.0</kp>
+	    <kd>100.0</kd>
+	    <mu1>1.0</mu1>
+	    <mu2>1.0</mu2>
+	    <maxVel>1.0</maxVel>
+	    <minDepth>0.00</minDepth>
 	   <material>Gazebo/Black</material>
 	</gazebo>
 	<gazebo reference="left_back_wheel">
+	    <kp>1000000.0</kp>
+	    <kd>100.0</kd>
+	    <mu1>1.0</mu1>
+	    <mu2>1.0</mu2>
+	    <maxVel>1.0</maxVel>
+	    <minDepth>0.00</minDepth>
 	   <material>Gazebo/Black</material>
 	</gazebo>
 	<gazebo reference="camera_link">
@@ -231,32 +259,6 @@
 	</gazebo>
 
 	<!-- Ultrasonic Sonar Sensors Links -->
-	<!-- <link name="sonar_front">
-		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<geometry>
-				<box size="0.001 0.001 0.001"/>
-			</geometry>
-		</collision>
-		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<geometry>
-				<box size="0.001 0.001 0.001"/>
-			</geometry>
-		</visual> 
-		<inertial>
-			<mass value="1e-5" />
-			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
-		</inertial>
-	</link>
-
-	<joint name="sonar_front_joint" type="fixed">
-		<axis xyz="0 0 0" />
-		<origin xyz="0.1275 0 0.01" rpy="0 0 0"/>
-		<parent link="base_link"/>
-		<child link="sonar_front"/>
-	</joint> -->	
 
 	 <link name="sonar_back">
 		<collision>
@@ -341,43 +343,6 @@
 	</joint>
 
 	<!-- Ultrasonic Sonar Sensors Gazebo Ref. -->
-	<!-- <gazebo reference="sonar_front">
-		<material>Gazebo/Green</material>
-		<sensor type="ray" name="sonar_front">
-		  <pose>0 0 0 0 0 0</pose>
-		  <update_rate>5</update_rate>
-		  <ray>
-		    <scan>
-		      <horizontal>
-		        <samples>5</samples>
-		        <resolution>1.0</resolution>
-		        <min_angle>-0.03</min_angle>
-		        <max_angle>0.03</max_angle>
-		      </horizontal>
-		      <vertical>
-		        <samples>5</samples>
-		        <resolution>1</resolution>
-		        <min_angle>-0.03</min_angle>
-		        <max_angle>0.03</max_angle>
-		      </vertical>
-		    </scan>
-		    <range>
-		      <min>0.01</min>
-		      <max>0.9</max>
-		      <resolution>0.01</resolution>
-		    </range>
-		  </ray>
-		  <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
-		    <gaussianNoise>0.005</gaussianNoise>
-		    <alwaysOn>true</alwaysOn>
-		    <updateRate>5</updateRate>
-		    <topicName>sonar_front</topicName>
-		    <frameName>sonar_front</frameName>
-		    <fov>0.7</fov>
-		    <radiation>ultrasound</radiation>
-		  </plugin>
-		</sensor>
-	</gazebo> -->
 
 	<!-- Sonar Back -->
 	<gazebo reference="sonar_back">
@@ -495,108 +460,26 @@
 		</sensor>
 	</gazebo>
 
-	<!-- Differential Drive Plugin 
+	<!-- Skid Steering Drive Plugini (optional) -->
 	<gazebo>
-	    <plugin name="differential_drive_controller"
-		    filename="libgazebo_ros_diff_drive.so">
-		<legacyMode>false</legacyMode>
-		<alwaysOn>true</alwaysOn>
-		<updateRate>1000.0</updateRate>
-		<leftJoint>joint_left_back_wheel, joint_left_front_wheel</leftJoint>
-		<rightJoint>joint_right_back_wheel, joint_right_front_wheel</rightJoint>
-		<robotBaseFrame>base_link</robotBaseFrame>
-		<wheelSeparation>0.25</wheelSeparation>
-		<wheelDiameter>0.07</wheelDiameter>
-		<publishWheelJointState>true</publishWheelJointState>
-		<wheelDiameter>0.2</wheelDiameter>
-		<wheelTorque>10</wheelTorque>
-		<publishTf>1</publishTf>
-		<odometryFrame>map</odometryFrame>
-		<commandTopic>cmd_vel</commandTopic>
-		<odometryTopic>odom</odometryTopic>
-		<robotBaseFrame>base_link</robotBaseFrame>
-		<wheelAcceleration>2.8</wheelAcceleration>
-		<publishWheelJointState>true</publishWheelJointState>
-		<publishWheelTF>false</publishWheelTF>
-		<odometrySource>world</odometrySource>
-		<rosDebugLevel>Debug</rosDebugLevel>
-	     </plugin>
-	</gazebo>  -->
- 
-	<!-- Gazebo ROS Control Plugin and Planar Move Plugin -->
-	<gazebo>
-		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-			<robotNamespace>/hamer_mini</robotNamespace>
-			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-			<legacyModeNS>false</legacyModeNS>
-		</plugin>
-	</gazebo> 	
-
-	<gazebo>
-		<plugin name="base_controller" filename="libgazebo_ros_planar_move.so">
-		    <commandTopic>cmd_vel</commandTopic>
-		    <odometryTopic>odom</odometryTopic>
-		    <odometryFrame>odom</odometryFrame>
-		    <odometryRate>100</odometryRate>
-		    <robotBaseFrame>base_link</robotBaseFrame>
-		</plugin> 
-	</gazebo> 
-
-	<!-- Hokuyo Laser 
-	 	
-	<link name="hokuyo_link">
-	  <collision>
-	    <origin xyz="0 0 0" rpy="0 0 0"/>
-	    <geometry>
-	  	<cylinder length="0.04" radius="0.02" />
-	    </geometry>
-	  </collision>
-	  <visual>
-	    <origin xyz="0 0 0" rpy="0 0 0"/>
-	    <geometry>
-	  	<cylinder length="0.04" radius="0.02" />
-	    </geometry>
-	  </visual>
-	</link>
-
-	<joint name="hokuyo_joint" type="fixed">
-	  <axis xyz="0 1 0" />
-	  <origin xyz="-0.05 0 0.07" rpy="0 0 0"/>
-	  <parent link="base_link"/>
-	  <child link="hokuyo_link"/>
-	</joint>	
-
-	<gazebo reference="hokuyo_link">
-	    <sensor type="ray" name="head_hokuyo_sensor">
-	      <pose>0 0 0 0 0 0</pose>
-	      <visualize>true</visualize>
-	      <update_rate>40</update_rate>
-	      <ray>
-		<scan>
-		  <horizontal>
-		    <samples>720</samples>
-		    <resolution>1</resolution>
-		    <min_angle>-3.1416</min_angle>
-		    <max_angle>3.1416</max_angle>
-		  </horizontal>
-		</scan>
-		<range>
-		  <min>0.10</min>
-		  <max>10.0</max>
-		  <resolution>0.01</resolution>
-		</range>
-		<noise>
-		  <type>gaussian</type>
-		  <mean>0.0</mean>
-		  <stddev>0.01</stddev>
-		</noise>
-	      </ray>
-	      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-		<topicName>/hamer_mini/laser/scan</topicName>
-		<frameName>hokuyo_link</frameName>
-	      </plugin>
-	    </sensor>
-  	</gazebo>  -->
+	  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+	    <updateRate>100.0</updateRate>
+	    <robotNamespace>hamer_mini</robotNamespace>
+	    <leftFrontJoint>joint_left_front_wheel</leftFrontJoint>
+	    <rightFrontJoint>joint_right_front_wheel</rightFrontJoint>
+	    <leftRearJoint>joint_left_back_wheel</leftRearJoint>
+	    <rightRearJoint>joint_right_back_wheel</rightRearJoint>
+	    <wheelSeparation>0.4</wheelSeparation>
+	    <wheelDiameter>0.215</wheelDiameter>
+	    <robotBaseFrame>base_link</robotBaseFrame>
+	    <MaxForce>5.0</MaxForce>
+	    <torque>20</torque>
+	    <commandTopic>cmd_vel</commandTopic>
+	    <odometryTopic>odom</odometryTopic>
+	    <odometryFrame>odom</odometryFrame>
+	    <broadcastTF>1</broadcastTF>
+	  </plugin>
+	</gazebo>
 
 	<!-- Test tfmini Lidar -->
 	<link name="tfmini_link">
@@ -724,73 +607,4 @@
 	    </sensor>
 	  </gazebo>
 
-	<!-- Camera -->
-	<!-- <link name="camera_link">
-	 	<visual>
-		   <origin rpy="1.570796 0 0" xyz="0 0 0"/>
-		   <geometry>
-		       <mesh filename="package://hamer_mini/meshes/Stl/Intel_RealSense_Depth_Camera_D435.stl" scale="0.00105 0.00105 0.00105"/>
-		   </geometry>
-	 	</visual>
-	 	<collision>
-			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-			<geometry>
-				<box size="0.0730 0.2760 0.0720"/>
-	       		</geometry>
-	 	</collision>
-	 	<inertial>
-			<mass value="0.170" />
-			<origin xyz="0 0 0" />
-			<inertia ixx="0.001152600" ixy="0.0" ixz="0.0"
-				iyy="0.000148934" iyz="0.0"
-				izz="0.001154654" />
-	 		</inertial>
-	</link>
-	
-	<joint name="camera_joint" type="fixed">
-	    <axis xyz="0 1 0" />
-	    <origin xyz="0.1275 0 0.03" rpy="0 0 1.57"/>
-	    <parent link="base_link"/>
-	    <child link="camera_link"/>
-	</joint>
-
-	<gazebo reference="camera_link">  
-	 	<sensor type="camera" name="camera1">
-			<update_rate>30.0</update_rate>
-			<camera>
-		 		<horizontal_fov>1.3962634</horizontal_fov>
-		 		<image>
-					<format>R8G8B8</format>
-					<width>800</width>
-					<height>800</height>
-		 		</image>
-		 		<clip>
-					<near>0.02</near>
-					<far>300</far>
-				</clip>
-				<noise>
-				   <type>gaussian</type>
-				   <mean>0.0</mean>
-				   <stddev>0.007</stddev>
-				</noise>
-			</camera>
-		
-	<plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-		 <robotNamespace>/hamer_mini</robotNamespace>
-		 <cameraName>camera</cameraName>
-		 <alwaysOn>true</alwaysOn>
-		 <updateRate>0.0</updateRate>
-		 <imageTopicName>image_raw</imageTopicName>
-		 <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-
-		<frameName>camera_link</frameName>
-		<hackBaseline>0.07</hackBaseline>
-		<distortionK1>0.0</distortionK1>
-		<distortionK2>0.0</distortionK2>
-		<distortionK3>0.0</distortionK3>
-		<distortionT1>0.0</distortionT1>
-		<distortionT2>0.0</distortionT2>
-	</plugin>
- </sensor> 
-</gazebo> -->
 </robot> 

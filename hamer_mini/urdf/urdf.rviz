@@ -5,6 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Status1
+        - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 402
   - Class: rviz/Selection
@@ -71,6 +73,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        dummy:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         laser_platform_link:
           Alpha: 1
           Show Axes: false
@@ -131,6 +137,8 @@ Visualization Manager:
           Value: true
         camera_link:
           Value: true
+        dummy:
+          Value: true
         laser_platform_link:
           Value: true
         left_back_wheel:
@@ -140,7 +148,7 @@ Visualization Manager:
         right_back_wheel:
           Value: true
         right_front_wheel:
-          Value: false
+          Value: true
         sonar_back:
           Value: true
         sonar_left:
@@ -155,27 +163,28 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          camera_link:
-            {}
-          laser_platform_link:
-            {}
-          left_back_wheel:
-            {}
-          left_front_wheel:
-            {}
-          right_back_wheel:
-            {}
-          right_front_wheel:
-            {}
-          sonar_back:
-            {}
-          sonar_left:
-            {}
-          sonar_right:
-            {}
-          tfmini_link:
-            {}
+        dummy:
+          base_link:
+            camera_link:
+              {}
+            laser_platform_link:
+              {}
+            left_back_wheel:
+              {}
+            left_front_wheel:
+              {}
+            right_back_wheel:
+              {}
+            right_front_wheel:
+              {}
+            sonar_back:
+              {}
+            sonar_left:
+              {}
+            sonar_right:
+              {}
+            tfmini_link:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 0.5
@@ -305,25 +314,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.10709728300571442
+      Distance: 0.1932477355003357
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.07847528904676437
-        Y: 0.39442381262779236
-        Z: 0.2005309760570526
+        X: -0.048040468245744705
+        Y: -0.022676872089505196
+        Z: 0.10630539804697037
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.38979655504226685
+      Pitch: 1.2997955083847046
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.181689739227295
+      Yaw: 3.094855785369873
     Saved: ~
 Window Geometry:
   Camera:
