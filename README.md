@@ -93,4 +93,16 @@ Changelog v0.5.1 Minor Update - (13.04.2020)
 NOTE: If you are encountering a freeze problem during the "catkin_make" process, try using the "catkin_make_isolated" command!
 
 --------------------------------------------------------------------------------------------
+
+# HAMER_mini v0.5.2
+
+Changelog v0.5.2 Minor Update - (20.04.2020)
+-------------------------------
+
+-   Added "Skid Steering Drive Plugin" to hamer_mini.urdf file (http://gazebosim.org/tutorials?tut=ros_gzplugins#SkidSteeringDrive).
+-   Some changes have been made to the hamer_mini.urdf file. The movement of the wheels problem has solved.
+-   Some bug fixes.
+
+
+---------------------------------------------------------------------------------------------
 Contributors: Alim Kerem Erdoğmuş
