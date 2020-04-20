@@ -103,6 +103,12 @@ Changelog v0.5.2 Minor Update - (20.04.2020)
 -   Some changes have been made to the hamer_mini.urdf file. The movement of the wheels problem has solved.
 -   Some bug fixes.
 
+New Requirements:
+
+- In order for the "joint_state_publisher" to work, "joint_state_publisher_gui" package must be downloaded to your computer.
+
+        $ sudo apt update
+        $ sudo apt install ros-melodic-joint-state-publisher-gui
 
 ---------------------------------------------------------------------------------------------
 Contributors: Alim Kerem Erdoğmuş
