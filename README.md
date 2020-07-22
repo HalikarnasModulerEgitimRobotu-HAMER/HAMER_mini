@@ -1,5 +1,5 @@
 # HAMER_mini v0.1 - (Released 28-01-2020)
-The HAMER_Mini robot package is designed as a sub-version of the "Halikarnas Modular Educational Robot" main model. ROS Melodic is compatible.
+The HAMER_Mini robot package is designed as a sub-version of the "Halikarnas Modular Educational Robot" main model. ROS Melodic compatible.
 
 ![Image of HAMER_mini](https://github.com/Akerdogmus/HAMER_mini/blob/master/hamer_mini_mainmodel_v0.5.png?raw=true)
 
