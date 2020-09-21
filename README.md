@@ -114,4 +114,4 @@ New Requirements:
         $ sudo apt install ros-melodic-joint-state-publisher-gui
 
 ---------------------------------------------------------------------------------------------
-Contributors: Alim Kerem Erdoğmuş
+
